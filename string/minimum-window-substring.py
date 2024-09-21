@@ -8,14 +8,14 @@ class Solution:
         for r in range(len(s)):
             char = s[r]
             window[char] = 1 + window.get(char, 0)
-            if char in t and count_t[char] == window[char]:
+            if char in count_t and count_t[char] == window[char]:
                 have+=1
             while need == have:
                 if (r -l+1) < reslen:
                     reslen = r-l+1
                     res = [l, r]
                 window[s[l]] -=1
-                if s[l] in t and count_t[s[l]] > window[s[l]]:
+                if s[l] in count_t and count_t[s[l]] > window[s[l]]:
                     have -=1
                 l+=1
         l, r = res
