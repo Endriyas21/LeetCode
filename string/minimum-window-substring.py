@@ -19,4 +19,4 @@ class Solution:
                     have -=1
                 l+=1
         l, r = res
-        return "" if res == float('inf') else s[l:r+1]
+        return "" if reslen == float('inf') else s[l:r+1]
