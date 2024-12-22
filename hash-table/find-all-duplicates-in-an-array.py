@@ -3,10 +3,10 @@ class Solution:
         res = []
 
         for n in nums:
-            index = abs(n) -1
+            index = abs(n)-1
 
             if nums[index] < 0:
-                res.append(abs(nums[index]))
+                res.append(abs(n))
             else:
                 nums[index] = -nums[index]
         
