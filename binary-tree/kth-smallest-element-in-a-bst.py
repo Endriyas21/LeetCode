@@ -14,9 +14,8 @@ class Solution:
             while curr:
                 stack.append(curr) 
                 curr = curr.left
-            node = stack.pop()
+            curr = stack.pop()
             n+=1
             if n == k:
-                return node.val
-            if node.right:
-                curr = curr.right
+                return curr.val
+            curr = curr.right
