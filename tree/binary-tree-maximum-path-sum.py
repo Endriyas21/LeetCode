@@ -10,11 +10,10 @@ class Solution:
         def dfs(node):
             if not node:
                 return 0
-            left = dfs(node.left)
-            right = dfs(node.right)
-            leftMax = max(left, 0)
-            rightMax = max(right, 0)
-            res[0] = max(res[0], node.val+leftMax+rightMax)
-            return node.val + max(leftMax, rightMax)
+            leftmax = max(0, dfs(node.left))
+            rightmax = max(0, dfs(node.right))
+
+            res[0] = max(res[0], node.val + leftmax + rightmax)
+            return node.val + max(leftmax, rightmax)
         dfs(root)
         return res[0]
