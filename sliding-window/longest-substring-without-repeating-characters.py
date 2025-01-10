@@ -10,5 +10,5 @@ class Solution:
                 while l < r and s[r] in count:
                     count.remove(s[l])
                     l+=1
-                count.add(s[r])
+                count.add(s[r]) #be aware
         return res
