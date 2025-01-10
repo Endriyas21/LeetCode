@@ -3,15 +3,15 @@ class Solution:
         stack = []
         for n in tokens:
             if n == '+':
-                stack.append(int(stack.pop()) + int(stack.pop()))
+                stack.append(stack.pop() + stack.pop())
             elif n == '-':
-                a, b == int(stack.pop()), int(stack.pop())
+                a, b == stack.pop(), stack.pop()
                 stack.append(b-a)
             elif n == '*':
-                stack.append(int(stack.pop()) * int(stack.pop()))
+                stack.append(stack.pop() * stack.pop())
             elif n == '/':
-                a, b = int(stack.pop()), int(stack.pop())
-                stack.append(b/a)
+                a, b = stack.pop(), stack.pop()
+                stack.append(int(b/a))
             else:
-                stack.append(n)
+                stack.append(int(n))
         return stack[-1]
