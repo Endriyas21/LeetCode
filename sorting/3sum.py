@@ -12,9 +12,9 @@ class Solution:
                 total = nums1 + nums[l] + nums[r]
                 if total >0:
                     r-=1
-                if total <0:
+                elif total <0:
                     l+=1
-                if total == 0:
+                else:
                     res.append([nums1, nums[l], nums[r]])
                     l+=1
                 while l<r and nums[l-1] == nums[l]:
