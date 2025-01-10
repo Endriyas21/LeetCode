@@ -5,7 +5,7 @@ class Solution:
             if n == '+':
                 stack.append(stack.pop() + stack.pop())
             elif n == '-':
-                a, b == stack.pop(), stack.pop()
+                a, b = stack.pop(), stack.pop()
                 stack.append(b-a)
             elif n == '*':
                 stack.append(stack.pop() * stack.pop())
