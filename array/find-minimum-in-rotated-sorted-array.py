@@ -7,6 +7,8 @@ class Solution:
                 res = min(nums[l], res)
                 break
             m = (l+r)//2
+            res = min(res, nums[m
+            ])
             if nums[l] <= nums[m]:
                 l = m +1
             else:
