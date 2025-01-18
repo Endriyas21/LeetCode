@@ -11,6 +11,8 @@ class Solution:
             for i in range(2, n):
                 prev, curr = curr, max(nums[i] + prev, curr)
             return curr
+        if len(nums) == 1:
+            return nums[0]
         case1 = helper(nums[1:])
         case2 = helper(nums[:-1])
         return max(case1, case2)
