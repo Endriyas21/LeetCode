@@ -12,8 +12,8 @@ class Solution:
                 r +=1
                 l -=1
             l, r = i , i+1
-            while i >=0 and r < len(s) and s[l] == s[r]:
-                if (r -l +1) >  resLen:
+            while l >=0 and r < len(s) and s[l] == s[r]:
+                if (r-l +1) >  resLen:
                     resLen = r -l +1
                     res = s[l: r+1]
                 r +=1
