@@ -20,8 +20,6 @@ class Solution:
                         q.append((r,c))
 
 
-
-
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == "1" and (r,c) not in visited:
@@ -29,5 +27,7 @@ class Solution:
                     island +=1
         return island
 
+
+        
 
 
