@@ -1,5 +1,9 @@
 class Solution {
     public int longestConsecutive(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
         Set<Integer> numSet = new HashSet<>();
         for (int num : nums) {
             numSet.add(num);
@@ -7,7 +11,7 @@ class Solution {
 
         int longestStreak = 0;
 
-        for (int num : nums) {
+        for (int num : numSet) {
             // Check if it is the start of a sequence
             if (!numSet.contains(num - 1)) {
                 int currentNum = num;
