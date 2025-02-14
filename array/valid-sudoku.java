@@ -11,16 +11,16 @@ class Solution {
 
         }
 
-        for (int i =0; i<=9; i++){
-            for (int j =0; j<=9; j++){
+        for (int i =0; i<9; i++){
+            for (int j =0; j<9; j++){
                 char w = board[i][j];
                 
-                if (w == "."){
+                if (w == '.'){
                     continue;
                 }
                 int index = (i/3)*3 + (j/3);
-                if (rows.get(i).contain(w) || cols.get(j).contains(w) || square.get(index).contains(w)){
-                    return False;
+                if (rows.get(i).contains(w) || cols.get(j).contains(w) || square.get(index).contains(w)){
+                    return false;
                 }
                 rows.get(i).add(w);
                 cols.get(j).add(w);
@@ -28,6 +28,6 @@ class Solution {
 
             }
         }
-        return True;
+        return true;
     }
 }
