@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         // Binary search to find the minimum eating speed
