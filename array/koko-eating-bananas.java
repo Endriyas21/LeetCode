@@ -1,33 +1,46 @@
+import java.util.Arrays;
+
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        // Helper function to calculate the total hours needed to eat all bananas at speed k
-        int calculateHours(int[] piles, int k) {
-            int hours = 0;
-            for (int pile : piles) {
-                // Calculate the hours needed for the current pile and add it to the total hours
-                // (pile + k - 1) / k is equivalent to Math.ceil(pile / k)
-                hours += (pile + k - 1) / k;
-            }
-            return hours;
-        }
-
         // Binary search to find the minimum eating speed
         int left = 1; // Minimum possible speed
-        int right = Arrays.stream(piles).max().getAsInt(); // Maximum possible speed
-        int result = right;
+        int right = getMaxPile(piles); // Maximum possible speed
+        int minSpeed = right;
 
         while (left <= right) {
-            int mid = left + (right - left) / 2;
-            int hours = calculateHours(piles, mid);
+            int midSpeed = left + (right - left) / 2;
+            int requiredHours = calculateTotalHours(piles, midSpeed);
 
-            if (hours <= h) {
-                result = mid; // Update result to the current mid
-                right = mid - 1; // Try a smaller speed
+            if (requiredHours <= h) {
+                minSpeed = midSpeed; // Update minSpeed to the current midSpeed
+                right = midSpeed - 1; // Try a smaller speed
             } else {
-                left = mid + 1; // Try a larger speed
+                left = midSpeed + 1; // Try a larger speed
             }
         }
 
-        return result;
+        return minSpeed;
+    }
+
+    // Helper function to calculate the total hours needed to eat all bananas at speed k
+    private int calculateTotalHours(int[] piles, int k) {
+        int totalHours = 0;
+        for (int pile : piles) {
+            // Calculate the hours needed for the current pile and add it to the total hours
+            // (pile + k - 1) / k is equivalent to Math.ceil(pile / k)
+            totalHours += (pile + k - 1) / k;
+        }
+        return totalHours;
+    }
+
+    // Helper function to get the maximum pile size
+    private int getMaxPile(int[] piles) {
+        int maxPile = 0;
+        for (int pile : piles) {
+            if (pile > maxPile) {
+                maxPile = pile;
+            }
+        }
+        return maxPile;
     }
 }
