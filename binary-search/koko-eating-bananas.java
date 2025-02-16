@@ -4,7 +4,7 @@ class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         // Binary search to find the minimum eating speed
         int left = 1; // Minimum possible speed
-        int right = getMaxPile(piles); // Maximum possible speed
+        int right = Arrays.stream(piles).max().getAsInt(); // Maximum possible speed
         int minSpeed = right;
 
         while (left <= right) {
@@ -31,16 +31,5 @@ class Solution {
             totalHours += (pile + k - 1) / k;
         }
         return totalHours;
-    }
-
-    // Helper function to get the maximum pile size
-    private int getMaxPile(int[] piles) {
-        int maxPile = 0;
-        for (int pile : piles) {
-            if (pile > maxPile) {
-                maxPile = pile;
-            }
-        }
-        return maxPile;
     }
 }
