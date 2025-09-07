@@ -6,7 +6,12 @@ public:
         
         while(left<=right){
             int m = left+(right-left)/2;
-            if((m-1 >=0 && nums[m-1] != nums[m]) && (m+1 < nums.size() && nums[m+1] != nums[m])) return nums[m];
+            
+            // Fix: Handle boundary conditions properly
+            if((m == 0 || nums[m-1] != nums[m]) && 
+               (m == nums.size()-1 || nums[m+1] != nums[m])) {
+                return nums[m];
+            }
 
             int border = (m-1>=0 && nums[m-1] == nums[m]) ? m-1 : m;
             if(border%2==0){
@@ -16,6 +21,6 @@ public:
                 right=m-1;
             }
         }
-        return -1; 
-    } 
+        return -1;
+    }
 };
