@@ -19,8 +19,12 @@ class Solution:
                     q.append((node.left,idx*2))
                 if node.right:
                     q.append((node.right, idx*2+1))
-            _,last_idx = q[-1] if q else (None, 0)
-            max_width = max(max_width, last_idx - first_idx+1)
+            if q:
+                _, last_idx = q[-1]
+                _, next_first_idx = q[0]
+                max_width = max(max_width, last_idx - next_first_idx + 1)
+            else:
+                max_width = max(max_width, 1)
         return max_width
 
                 
