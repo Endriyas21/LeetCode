@@ -1,14 +1,17 @@
 class Solution:
     def vowelStrings(self, words: List[str], queries: List[List[int]]) -> List[int]:
-        def is_vowel_string(word):
-            vowels = {"a", "e", "i", "o", "u"}
-            return word[0] in vowels and word[-1] in vowels
+        vowel = set("aeiou")
+        prefix = [0]*(len(words)+1)
+        res = []
 
-        ans = []
-        for l, r in queries:
+        for i, w in enumerate(words):
             count = 0
-            for word in words[l:r+1]:
-                if is_vowel_string(word):
-                    count += 1
-            ans.append(count)
-        return ans
+            if w[0] in vowel and w[-1] in vowel:
+                count+=1
+            prefix[i+1] = count + prefix[i]
+
+        for i,w in enumerate(queries):
+            l,r = w
+            res.append(prefix[r+1] - prefix[l])
+        return res
+            
